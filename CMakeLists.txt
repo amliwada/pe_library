@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.12)
 
 project(pe_library VERSION 1.0 LANGUAGES CXX)
 
+set(PE_LIBRARY_BUILD_TESTS ON CACHE BOOL "Build the tests (Requires https://github.com/google/googletest)" FORCE)
+
 add_library(${PROJECT_NAME})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON CXX_EXTENSIONS OFF)
@@ -143,3 +145,11 @@ export(EXPORT "${PROJECT_NAME}_targets"
     FILE "${CMAKE_CURRENT_BINARY_DIR}/cmake/${PROJECT_NAME}_targets.cmake"
     NAMESPACE ${namespace}::
 )
+
+if (PE_LIBRARY_BUILD_TESTS)
+    add_compile_options(/MDd)
+
+    include(CTest)
+
+    add_subdirectory(tests)
+endif()
