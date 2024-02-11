@@ -29,3 +29,20 @@ int main()
 	return 0;
 }
 ```
+
+### CMakeLists.txt
+
+```CMake
+add_executable(pe_library_example main.cpp)
+set_target_properties(pe_library_example PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON CXX_EXTENSIONS OFF)
+
+include(FetchContent)
+FetchContent_Declare(pe_library GIT_REPOSITORY https://github.com/amliwada/pe_library.git GIT_TAG v1.0.0)
+FetchContent_MakeAvailable(pe_library)
+
+target_link_libraries(pe_library_example pe_library)
+```
+
+### More Examples
+
+More examples can be found in the [tests](./tests/) directory.
