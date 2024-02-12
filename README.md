@@ -30,7 +30,7 @@ int main()
 }
 ```
 
-### CMakeLists.txt
+#### CMakeLists.txt
 
 ```CMake
 add_executable(pe_library_example main.cpp)
