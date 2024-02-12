@@ -14,11 +14,17 @@ namespace pe_library::details
 		using iterator = std::list<section>::iterator;
 		using const_iterator = std::list<section>::const_iterator;
 
-		iterator begin();
-		iterator end();
+		iterator begin() noexcept;
+		iterator end() noexcept;
 
-		const_iterator cbegin() const;
-		const_iterator cend() const;
+		const_iterator cbegin() const noexcept;
+		const_iterator cend() const noexcept;
+
+		section const& front() const noexcept;
+		section& front() noexcept;
+
+		section const& back() const noexcept;
+		section& back() noexcept;
 
 		template<class... ts>
 		decltype(auto) add_section(ts&&... vs)
